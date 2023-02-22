@@ -16,9 +16,13 @@ import java.util.Locale;
  */
 public class Validator {
     
-//    public static void checkName(String name){
-//        
-//    }
+    public static boolean checkNamePresence(String name){
+        //check if name is present in the field
+        if(name == null || name.isEmpty()){
+            return false;
+        }
+        return true;
+    }
     
     public static boolean checkAge(int age, String date){
         //if int is already checked my gui component
@@ -27,13 +31,16 @@ public class Validator {
         LocalDate birthdate = LocalDate.parse(date, inputDtf);
         LocalDate nowDate = LocalDate.now();
         Period difference = Period.between(birthdate, nowDate);
+       
         if(difference.getYears() == personAge){
             return true;
         }
         return false;
     }
-//    public static boolean checkDateFormat(Date date){
-//        
-//        return false;
-//    }
+    public static boolean checkDateFormat(String date){
+        
+        DateTimeFormatter inputDtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate birthdate = LocalDate.parse(date, inputDtf);
+       return false;
+   }
 }
